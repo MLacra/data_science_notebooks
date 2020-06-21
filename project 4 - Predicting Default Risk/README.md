@@ -22,11 +22,13 @@ I removed from the training set the following:
 7.	No-of-dependents
 
 ### *1.	Dealing with missing information:*
+
 Based on the number of nulls on each column, I could tell that column Duration-in-current-address has sparse data (more than 50% of the values are missing), so I decided to remove the column from the training set.
 
 For Age-years, I chose to fill the missing data with the median of the existing values on the same column. I chose median over mean as mean is susceptible to outliers and the Age years seems to have 19 rows with outliers (computed based on the interquartile method). 
 
 ### *2.	Dealing with columns with low variability:*
+
 Based on the number of distinct values on each column, I could tell that columns Concurrent-Credits and Occupation have very low variability as they only have 1 unique value. I decided that to remove these columns from the training set.
 
 Guarantors has 2 unique values, but is skewed towards one of the values so it has low variability.
@@ -34,17 +36,20 @@ Guarantors has 2 unique values, but is skewed towards one of the values so it ha
 Also, the Telephone is not information that can be related to credits and it also has low variability (2 unique values), so I discarded that as well
 
 ### *3.	Dealing with skewed data:*
+
 For the remaining columns, I computed how skewed the data is and it resulted that columns Foreign-Worker and No-of-dependents contain skewed information. Having skewed data will not affect the training of the model, but will affect during prediction, thus, I decided to eliminate these.
 
 
 ### *4.	Dealing with other correlations:*
+
 For the numerical data, I computed a heatmap that can be seen in the notebook. I observed here that there are no correlations above 0.7 (which can be considered as significant) so I concluded that the variables can be used together as they don’t seem to be correlated to each other.  
 
 ## _Step 3: Train your Classification Models_
+
 Here I trained and compared 4 models: Logistic Regression, Decision Tree, Random Forest Model (RandomForestClassifier from sklearn), Boosted Model (GradientBoostingClassifier from sklearn). Below I answer 3 questions for choosing the best model for this task. 
 
 ### *3.1 Logistic Regression*
-_1)	Which predictor variables are significant or the most important?_
+_3.1.1.	Which predictor variables are significant or the most important?_
 
 The variables that are most significant are 
 •	Account-Balance, 
@@ -52,16 +57,16 @@ The variables that are most significant are
 •	Credit-Amount, 
 •	Most-Valuable-available-asset. 
 
-_2)	Show the p-values or variable importance charts for all predictor variables._
+_3.1.2.	Show the p-values or variable importance charts for all predictor variables._
 
 The p-values are computed in the notebook. 
 
-_3)	Validate your model against the Validation set. What was the overall percent accuracy?_
+_3.1.3.	Validate your model against the Validation set. What was the overall percent accuracy?_
 
 The overall accuracy was 75.33% on the validation set.
 
 
-_4)	 Show the confusion matrix. Are there any bias seen in the model’s predictions?_
+_3.1.4.	 Show the confusion matrix. Are there any bias seen in the model’s predictions?_
 
 The overall percent accuracy of the Logistic model is 75.33%, which is strong
 PPV= true positives / (true positives + false positives) = 93 / (93+27) = 0.78
@@ -70,25 +75,25 @@ NPV= true negatives / (true negatives + false negatives) = 20 / (20+10) = 0.66
 The accuracy for the Creditworthy class is 0.78, while for the Non-Creditworthy is 0.66. This means that the model has bias towards correctly predicting Creditworthy individuals because its accuracy in this segment is significantly higher than in the other.  
 
 ### *3.2 Decision Tree*
-_1)	Which predictor variables are significant or the most important?_
+_3.2.1.	Which predictor variables are significant or the most important?_
 
-After I ran the decision tree with all 12 variables, I obtained the variable importance in Figure 3. It seems 
-•	Credit-Amount
-•	Duration of Credit Month
-•	Account-Balance-No account 
+After I ran the decision tree with all 12 variables, I obtained the variable importance shown in Section 3.2.2. It seems 
+1. Credit-Amount
+2. Duration of Credit Month
+3. Account-Balance-No account 
 are the most important predictor variables.
 
-_2)	Show the p-values or variable importance charts for all of the predictor variables._
+_3.2.2.	Show the p-values or variable importance charts for all of the predictor variables._
 
 Variable importance can be found  below.
 
 ![Decision tree variable importance](figures/decisionTree_var_imp.png)
 
-_3)	Validate your model against the Validation set. What was the overall percent accuracy?_
+_3.2.3.	Validate your model against the Validation set. What was the overall percent accuracy?_
 
 The overall accuracy was 63.34% on the validation set.
 
-_4)	 Show the confusion matrix. Are there any bias seen in the model’s predictions?_
+_3.2.4.	 Show the confusion matrix. Are there any bias seen in the model’s predictions?_
 
 The overall percent accuracy of the Decision Tree model is 70 %, which is strong
 PPV= true positives / (true positives + false positives) = 0.73
