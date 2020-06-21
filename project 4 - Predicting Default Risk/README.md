@@ -1,13 +1,13 @@
 # Predicting Default Risk
 
 ## *Step 1: Business and Data Understanding*
-        * _What decisions needs to be made?_
+1.1. _What decisions needs to be made?_
 The decision that needs to be made is whether a new customer should be given a loan or not. Once we determine how to predict for one customer, we need to decide to which of the 500 new customers our bank should give the loan to.
 
-        * _What data is needed to inform those decisions?_
+1.2. _What data is needed to inform those decisions?_
 The data that is used in order to inform these decisions comprises information about credit history of the current customers of the bank. Based on their characteristics, we need to choose and train a model that uses this information as training data and predict whether the new customers are worthy of a loan.
 
-        * _What kind of model (Continuous, Binary, Non-Binary, Time-Series) do we need to use to help make these decisions?_
+1.3. _What kind of model (Continuous, Binary, Non-Binary, Time-Series) do we need to use to help make these decisions?_
 The model is a Binary Classification model as it needs to predict whether the new incoming customers should be given the loans or not, i.e., positive or negative outcomes.
 
 
@@ -44,7 +44,8 @@ For the numerical data, I computed a heatmap that can be seen in the notebook. I
 Here I trained and compared 4 models: Logistic Regression, Decision Tree, Random Forest Model (RandomForestClassifier from sklearn), Boosted Model (GradientBoostingClassifier from sklearn). Below I answer 3 questions for choosing the best model for this task. 
 
 ### *3.1 Logistic Regression*
-_1)	Which predictor variables are significant or the most important? _
+_1)	Which predictor variables are significant or the most important?_
+
 The variables that are most significant are 
 •	Account-Balance, 
 •	Duration-of-Credit-Month, 
@@ -52,13 +53,16 @@ The variables that are most significant are
 •	Most-Valuable-available-asset. 
 
 _2)	Show the p-values or variable importance charts for all predictor variables._
+
 The p-values are computed in the notebook. 
 
 _3)	Validate your model against the Validation set. What was the overall percent accuracy?_
+
 The overall accuracy was 75.33% on the validation set.
 
 
-_4)	 Show the confusion matrix. Are there any bias seen in the model’s predictions? _
+_4)	 Show the confusion matrix. Are there any bias seen in the model’s predictions?_
+
 The overall percent accuracy of the Logistic model is 75.33%, which is strong
 PPV= true positives / (true positives + false positives) = 93 / (93+27) = 0.78
 NPV= true negatives / (true negatives + false negatives) = 20 / (20+10) = 0.66
@@ -67,21 +71,25 @@ The accuracy for the Creditworthy class is 0.78, while for the Non-Creditworthy 
 
 ### *3.2 Decision Tree*
 _1)	Which predictor variables are significant or the most important?_
+
 After I ran the decision tree with all 12 variables, I obtained the variable importance in Figure 3. It seems 
 •	Credit-Amount
 •	Duration of Credit Month
 •	Account-Balance-No account 
 are the most important predictor variables.
 
-_2)	Please show the p-values or variable importance charts for all of your predictor variables._
+_2)	Show the p-values or variable importance charts for all of the predictor variables._
+
 Variable importance can be found  below.
 
 ![Decision tree variable importance](figures/decisionTree_var_imp.png)
 
 _3)	Validate your model against the Validation set. What was the overall percent accuracy?_
+
 The overall accuracy was 63.34% on the validation set.
 
-_4)	 Show the confusion matrix. Are there any bias seen in the model’s predictions? _
+_4)	 Show the confusion matrix. Are there any bias seen in the model’s predictions?_
+
 The overall percent accuracy of the Decision Tree model is 70 %, which is strong
 PPV= true positives / (true positives + false positives) = 0.73
 NPV= true negatives / (true negatives + false negatives) = 0.41
@@ -91,20 +99,24 @@ The accuracy for the Creditworthy class is 0.73, while for the Non-Creditworthy 
 
 ### *3.3 Random Forest Model*
 _3.3.1.	Which predictor variables are significant or the most important?_
+
 The scores for variable importance can be seen in 3.3.2. It seems 
 •	Credit-Amount
 •	Age-Years
 •	Duration of Credit Month
 are the most important predictor variables.
 
-_3.3.2.	Please show the p-values or variable importance charts for all of your predictor variables._
+_3.3.2.	Show the p-values or variable importance charts for all of the predictor variables._
+
 Variable importance can be found below.
 ![Random forest variable importance](figures/random_forest_var_imp.png)
 
 _3.3.3.	Validate your model against the Validation set. What was the overall percent accuracy?_
+
 The overall accuracy was 76%.
 
 _3.3.4.	 Show the confusion matrix. Are there any bias seen in the model’s predictions?_ 
+
 The overall percent accuracy of the Random Forest model is 76%, which is strong
 PPV= true positives / (true positives + false positives) = 0.78
 NPV= true negatives / (true negatives + false negatives) = 0.69
@@ -114,6 +126,7 @@ The accuracy for the Creditworthy class is 0.78, while for the Non-Creditworthy 
 ### *3.4 Random Forest Model*
 
 _3.4.1.	Which predictor variables are significant or the most important?_
+
 The scores for variable importance can be seen in 3.4.2. It seems 
 ○	Credit-Amount
 ○	Duration of Credit Month
@@ -123,7 +136,8 @@ The scores for variable importance can be seen in 3.4.2. It seems
 
 are the most important predictor variables.
 
-_3.4.2.	Please show the p-values or variable importance charts for all of your predictor variables._
+_3.4.2.	Show the p-values or variable importance charts for all of the predictor variables._
+
 Variable importance can be found below.
 
 ![Boosted model - variable importance](figures/boosted_var_imp.png)
@@ -131,7 +145,7 @@ Variable importance can be found below.
 _3.4.3.	Validate your model against the Validation set. What was the overall percent accuracy?_
 The overall accuracy was 72.67%.
 
-_3.4.4.	Show the confusion matrix. Are there any bias seen in the model’s predictions? _
+_3.4.4.	Show the confusion matrix. Are there any bias seen in the model’s predictions?_
 The overall percent accuracy of the Boosted model is 72.67%, which is strong
 PPV= true positives / (true positives + false positives) = 0.75
 NPV= true negatives / (true negatives + false negatives) = 0.62
