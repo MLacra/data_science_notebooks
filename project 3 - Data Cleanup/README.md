@@ -2,7 +2,7 @@
 
 The purpose of this project was to investigate the data and clean (just remove outliers) and prepare it for data analysis tasks.
 
-## * Dealing with outliers*
+## *Dealing with outliers*
 I chose as an outlier the row where the city is Cheyenne. Below, I outline my methodology to reach this conclusion:
 
 First, I computed the outliers for the Total Sales values. I did this by using the interquartile method, computing the upper fence and the lower fence. Based on the obtained interval, for total sales, I obtained the following two outlier rows:
